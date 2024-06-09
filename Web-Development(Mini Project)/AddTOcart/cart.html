@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .col-sm-8 {
+            background-color: #ffffff; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-product {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            background-color: #f1f8ff; 
+        }
+
+        .cart-price {
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 1px solid #ced4da; 
+            background-color: #f1f8ff; 
+        }
+
+        h2 {
+            color: #007bff; 
+        }
+
+        h5 {
+            color: #333; 
+        }
+
+        p {
+            color: #555; 
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-sm-8">
+        <h2>Cart Products</h2>
+        <div class="cart-product-container"></div>
+    </div>
+</div>
+
+<script>
+    const cart4 = JSON.parse(localStorage.getItem('cart2'));
+    let temp2 = 0;
+
+    if (cart4) {
+        for (let i = 0; i < cart4.length; i++) {
+            temp2 = temp2 + cart4[i].price;
+        }
+
+        console.log(temp2);
+
+        const cartproduct = document.querySelector('.cart-product-container');
+
+        cart4.forEach((el) => {
+            const p = document.createElement('div');
+            p.classList.add('cart-product');
+
+            const pn = document.createElement('h2');
+            pn.textContent = el.name;
+            p.appendChild(pn);
+
+            const pp = document.createElement('h5');
+            pp.textContent = "Price: " + el.price;
+            p.appendChild(pp);
+
+            cartproduct.appendChild(p);
+        });
+
+        const c = document.createElement('div');
+        c.classList.add('cart-price');
+        const pd = document.createElement('h2');
+        pd.textContent = "Price Details of Cart:";
+        c.appendChild(pd);
+
+        const ca = document.createElement('h5');
+        ca.textContent = "Total Cart Price: " + temp2;
+        c.appendChild(ca);
+
+        cartproduct.appendChild(c);
+    } else {
+        const cartproduct = document.querySelector('.cart-product-container');
+        const p = document.createElement('p');
+        p.textContent = "Cart is empty";
+        cartproduct.appendChild(p);
+    }
+</script>
+</body>
+</html>

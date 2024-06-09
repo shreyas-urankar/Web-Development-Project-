@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+.container {
+  width: 50%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+    border-color: white;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  padding: 10px;
+  background-color: orange;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+       
+        <form action="register.php" method="post">
+            <h2>Registration Form</h2>
+            <label for="firstname">First Name</label>
+            <input type="text" class="box" placeholder="Enter First name" id="firstname" name="firstname">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="box" placeholder="Enter Last name" id="lastname" name="lastname">
+            <label for="username">User Name</label>
+            <input type="text" class="box" placeholder="Enter User name" id="username" name="username">
+            <label for="pass">Password</label>
+            <input type="password" class="box" placeholder="Enter Password" id="pass" name="pass">
+            <button id="show-pass">show password</button>
+           <a href="log.php" ><input type="submit" id="submit-btn" value="Register" disabled></a>
+            <div class="msg"></div>
+        </form>
+    </div>
+    
+    <script>
+        var firstname = document.getElementById('firstname');
+        var lastname = document.getElementById('lastname');
+        var username = document.getElementById('username');
+        var pass = document.getElementById('pass');
+        var submit = document.getElementById('submit-btn');
+        var showPass = document.getElementById('show-pass');
+    
+        var validFirstname = false, validLastname = false, validUsername = false, validPass = false;
+    
+        firstname.addEventListener('input', onFirstnameInput);
+        lastname.addEventListener('input', onLastnameInput);
+        username.addEventListener('input', onUsernameInput);
+        pass.addEventListener('input', onPassInput);
+        showPass.addEventListener('click', togglePass);
+    
+        function onFirstnameInput(event) {
+            //console.log(event.target.value);
+            validFirstname = event.target.value.length >= 1;
+            firstname.style.borderColor = validFirstname ? 'green': 'red';
+            checkValidity();
+        }
+        function onLastnameInput(event) {
+            // console.log(event.target.value);
+            validLastname = event.target.value.length >= 1;
+            lastname.style.borderColor = validLastname ? 'green': 'red';
+            checkValidity();
+        }
+        function onUsernameInput(event) {
+            // console.log(event.target.value);
+            validUsername = event.target.value.length > 5;
+            username.style.borderColor = validUsername ? 'green': 'red';
+            checkValidity();
+        }
+    
+        function onPassInput(event) {
+            // console.log(event.target.value);
+            validPass = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(event.target.value);
+            pass.style.borderColor = validPass ? 'green': 'red';
+            checkValidity();
+        }
+    
+        function checkValidity() {
+            // console.log((validUsername && validPass));
+            submit.disabled = !(validFirstname && validLastname && validUsername && validPass);
+        }
+    
+        function togglePass(event) {
+          event.preventDefault();
+          if(pass.getAttribute('type') === 'text') {
+            pass.setAttribute('type', 'password');
+            showPass.innerHTML = 'Show Password';
+          } else {
+            pass.setAttribute('type', 'text');
+            showPass.innerHTML = 'Hide Password';
+          }
+         
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    height: 80px;
+    border: 2px solid black;
+    background-color: #0A1D56;
+    display: flex;
+}
+
+.logo {
+    height: 80px;
+}
+
+.linking {
+    color: white;
+    margin: 20px;
+    margin-left: 100px;
+}
+
+.linking:hover {
+    border: 3px solid white;
+    transition-duration: 0.4s;
+}
+
+.container {
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(32, 99, 122);
+}
+
+.box {
+    background-color: #FFFFFF;
+    height: 420px;
+    width: 307px;
+    margin: 20px;
+    padding: 20px 0px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    width: 150px;
+    height: 25px;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+h3 {
+    margin: -25px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    margin: 10px;
+}
+
+.img1, .img2, .img3, .img4 {
+    margin: 50px;
+    height: 200px;
+    background-size: cover;
+}
+
+.img1 {
+    background-image: url("laptop.webp");
+}
+
+.img2 {
+    background-image: url("mobiles.webp");
+}
+
+.img3 {
+    background-image: url("grocery\ image.jpeg");
+}
+
+.img4 {
+    background-image: url("home.jpeg");
+}

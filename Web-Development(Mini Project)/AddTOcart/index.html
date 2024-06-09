@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo-mit.png" class="logo" alt="">
+            </div>
+            <a href="index1.html" class="linking">Home</a>
+            <a href="" class="linking">Calendar</a>
+            <a href="aboutus.html" class="linking">About Us</a>
+            <a href="" class="linking">Contact Us</a>
+            <a href="log.html" class="log"><button type="button">Log-in</button></a>
+            <p style="color: red; padding-top: 20px;">MIT ADT UNIVERSITY</p>
+            <a href="cart.html" class="cart" style="padding-top: 30px; padding-left: 15px; color: white;">Cart <span class="cart-count">0</span></a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="box" id="box1">
+            <h2>Laptop</h2>
+            <div class="img1"></div>
+            <p>HP Victus Gaming Laptop, 12th Gen Intel Core i5-12450H</p>
+            <br>
+            <h3>$500</h3>
+            <button type="submit" onclick="addtocart({name:'Laptop',price:500})">Add to cart</button>
+        </div>
+        <div class="box" id="box2">
+            <h2>Smartphone</h2>
+            <div class="img2"></div>
+            <p>Samsung Galaxy S24 Ultra 5G AI Smartphone (Titanium Black, 12GB)</p>
+            <br>
+            <h3>$700</h3>
+            <button type="submit"  onclick="addtocart({name:'Smartphone',price:700})">Add to cart</button>
+        </div>
+        <div class="box" id="box3">
+            <h2>Grocery</h2>
+            <div class="img3"></div>
+            <p>Grocery</p>
+            <br>
+            <h3>$200</h3>
+            <button type="submit" onclick="addtocart({name:'grocery',price:200})">Add to cart</button>
+        </div>
+        <div class="box" id="box4">
+            <h2>Home Appliances</h2>
+            <div class="img4"></div>
+            <p>Home Appliances</p>
+            <br>
+            <h3>$25000</h3>
+            <button type="submit"  onclick="addtocart({name:'Home Appliances',price:25000})">Add to cart</button>
+        </div>
+    </div>
+    <script>
+        let cart2 = [];
+        const cartCount = document.querySelector('.cart-count');
+        function addtocart(prodDetails){
+            if(!cart2.find(e => e.name === prodDetails.name)) {
+                cart2.push(prodDetails);
+                cartCount.textContent = `(${cart2.length})`;
+                localStorage.setItem('cart2', JSON.stringify(cart2));
+            }
+            window.onload = function() {
+                cart2 = [...JSON.parse(localStorage.getItem('cart2'))];
+                cartCount.textContent = `(${cart2.length})`;
+            }
+        }
+    </script>
+</body>
+</html>
